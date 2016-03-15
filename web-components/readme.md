@@ -1,3 +1,32 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+    - [Abundance of choice](#abundance-of-choice)
+    - [Web Components Specs](#web-components-specs)
+      - [Template](#template)
+        - [What](#what)
+- [Frontend Talks](#frontend-talks)
+        - [WHY](#why)
+        - [Usage](#usage)
+        - [Browser Support](#browser-support)
+      - [HTML IMPORTS](#html-imports)
+        - [What](#what-1)
+        - [WHY](#why-1)
+        - [USAGE](#usage)
+        - [Browser Support](#browser-support-1)
+      - [Custom Elements](#custom-elements)
+        - [What](#what-2)
+        - [WHY](#why-2)
+        - [Browser Support](#browser-support-2)
+      - [SHADOW DOM](#shadow-dom)
+        - [What](#what-3)
+        - [Why](#why)
+        - [USAGE](#usage-1)
+        - [Browser Support](#browser-support-3)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ##Web Components
 
 [TOC]

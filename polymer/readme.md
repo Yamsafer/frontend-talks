@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Polymer](#polymer)
+  - [What](#what)
+  - [Why](#why)
+    - [Registration & Lifecycle](#registration-&-lifecycle)
+    - [Declared properties](#declared-properties)
+    - [Local dom](#local-dom)
+    - [Events](#events)
+    - [Data binding](#data-binding)
+    - [Behaviors](#behaviors)
+    - [Styling](#styling)
+  - [Community Elements](#community-elements)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Polymer
 
 [TOC]
