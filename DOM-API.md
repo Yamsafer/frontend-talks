@@ -1,9 +1,10 @@
 ##DOM: Document Object Model
+[TOC]
 
 The Document Object Model (DOM) is a programming interface for HTML, XML and SVG documents. It provides a structured representation of the document as a tree.
 ![Alt text](./DOM-API/dom-position.png)
 
-##DOM != JAVASCRIPT
+**DOM != JAVASCRIPT**
 
 > but it's quircky 
 
@@ -21,7 +22,7 @@ These tools account for differences between the different browsers and thus as w
 
 ------------------------------------------------------------------
 
-###DOM TREE
+### DOM Tree
 ```
 <html>
   <head>
@@ -36,7 +37,7 @@ These tools account for differences between the different browsers and thus as w
 
 >everything is a node, elements, comments, white space"
 
-###ACCESS THE DOM
+### DOM Fetching
 
 ```
 var body = document.querySelector('body');
@@ -48,8 +49,9 @@ var pClassList 	= paragraph.classList;
 
 ```
 
-DOM can have event listeners.
+### DOM Events
 
+DOM can have event listeners.
 click, hover, mouseenter, mouseleave, page load, good luck, etc.
 
 ```
@@ -110,11 +112,17 @@ paragraph.on('click', function(){
 
 ```
 
-### Manipulation
+### DOM Manipulation
 
 ```
 var count = 0;
 paragraph.on('click', function(e){
 	e.target.innerHTML = (++count) + " clicks";
 })
+
+paragraph.classList.add("hero");
+setTimeout(function(){
+	paragraph.remove();
+}, 3000000)
+
 ```
