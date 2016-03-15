@@ -1,13 +1,15 @@
-###DOM: Document Object Model
+##DOM: Document Object Model
 
 The Document Object Model (DOM) is a programming interface for HTML, XML and SVG documents. It provides a structured representation of the document as a tree.
 ![Alt text](./DOM-API/dom-position.png)
 
-#DOM != JAVASCRIPT
+##DOM != JAVASCRIPT
 
-most of the frustration arising from programming in the browser is a result of DOM INTERFACE implementation in different browsers rather than from javascript quirks! 
+> but it's quircky 
 
-as a result we have a set of libraries and tools that provide an api to manipulate the DOM in a consistent away and cross-browser!
+Most of the frustration arising from programming in the browser is a result of DOM INTERFACE implementation in different browsers rather than from javascript quirks! 
+
+As a result we have a set of libraries and tools that provide an api to manipulate the DOM in a consistent away and cross-browser!
 
 ![enter image description here](http://ideonexus.com/wp-content/uploads/2010/02/frameworks.jpg)
 
@@ -15,11 +17,11 @@ These tools account for differences between the different browsers and thus as w
 
 ![Alt text](./DOM-API/framework-position.png)
 
-[quirksmode.org](quirksmode.org) is the best place to learn about DOM quirks.
+> [quirksmode.org](quirksmode.org) is the best place to learn about DOM quirks.
 
 ------------------------------------------------------------------
 
-
+###DOM TREE
 ```
 <html>
   <head>
@@ -32,18 +34,23 @@ These tools account for differences between the different browsers and thus as w
 ```
 ![enter image description here](http://blog.mgechev.com/images/lightweight-ng/dom-tree.png)
 
-"everything is a node, even spaces"
+>everything is a node, elements, comments, white space"
 
-Get the DOM?
+###ACCESS THE DOM
 
 ```
 var body = document.querySelector('body');
 var paragraph = document.querySelector('#paragraph');
+
+var pParent 	= paragraph.parentElement;
+var pHtml 		= paragraph.innerHTML;
+var pClassList 	= paragraph.classList;
+
 ```
 
 DOM can have event listeners.
 
-click, hover, mouseenter, mouseleave, page load, etc.
+click, hover, mouseenter, mouseleave, page load, good luck, etc.
 
 ```
 function pClickHandler(e){
@@ -52,7 +59,8 @@ function pClickHandler(e){
 paragraph.onclick = pClickHandler;
 ```
 
- Nice and easy, but! can only add one event listener!
+ Nice and easy,
+ but can only add one event listener!
  What if we want multiple listeners?
 ```
 paragraph.addEventListener('click',  pClickHandler);
@@ -102,5 +110,11 @@ paragraph.on('click', function(){
 
 ```
 
+### Manipulation
 
-
+```
+var count = 0;
+paragraph.on('click', function(e){
+	e.target.innerHTML = (++count) + " clicks";
+})
+```
