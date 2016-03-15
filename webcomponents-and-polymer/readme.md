@@ -1,0 +1,200 @@
+##Polymer Introduction
+
+[TOC]
+
+### Abundance of choice
+It feels like every 6 months to a year there is some new framework we have to learn.
+
+![Alt text](./js-frameworks-trends.png)
+
+- Lots of frameworks,
+- Notion of **components**,
+- **they don’t work together**.
+
+There i still hope for humanity
+> A few years ago, engineers who work on the browsers got together to figure out, what are the best features of the frameworks and can we make them part of the browser. That way you don’t have to rewrite your code every 6 months.
+
+![Alt text](./logo.jpg)
+
+> In the past, a new tag would be invented, and then we had to wait for it to ship in every browser.
+
+**Web Components are low-level primitives that let you define your own HTML Elements.**
+
+### Web Components
+#### Template
+##### WHY
+as the landscape of web architecture is changing, and as the MVC model is not anymore bound by server frameworks only, and with the rise of client-side javascript framworks that compiles and render views on the user-agent, and as it's a shame if we move forward doing client side templating using such syntax
+
+```
+<script type="text/template">
+  <div>
+    <h1>Web Components</h1>
+    <img src="http://webcomponents.org/img/logo.svg">
+  </div>
+</script>
+```
+##### What
+Web components brings us the template html tag
+```
+<template id="template">
+  <style>
+	.thumb{
+		border : 1px solid red;
+		padding : 5px;
+	}
+  </style>
+  <div>
+    <h1>Frontend Talks</h1>
+    <img class="thumb" src="./logo.png">
+  </div>
+</template>
+```
+##### Usage
+```
+<script>
+  var template = document.querySelector('#template');
+  // deep clone
+  var clone = document.importNode(template.content, true);
+  var host = document.querySelector('#host');
+  host.appendChild(clone);
+</script>
+```
+##### Browser Support
+![Alt text](./template-browser-support.png)
+
+but  don't worry, polyfills are there for the save.
+
+#### SHADOW DOM
+##### What
+##### Why
+##### USAGE
+##### Browser Support
+
+#### HTML IMPORTS
+##### What
+	HTML Imports are a way to include and reuse HTML documents in other HTML documents
+
+##### WHY 
+> Imports provide convention for **bundling HTML/CSS/JS** (even other HTML Imports) into a single deliverable. It's an intrinsic feature, but a powerful one. If you're creating a theme, library, or just want to **segment your app** into logical chunks, giving users a single URL is compelling. Heck, you could even **deliver** an entire app via an import. Think about that for a second.
+
+
+##### USAGE
+```
+<head>
+  <link rel="import" href="/path/to/imports/stuff.html">
+</head>
+```
+##### Browser Support
+
+#### CUSTOM ELEMENTS
+##### What
+A custom element is an element whose constructor and prototype are defined by a developer, instead of by the user agent. The developer-supplied constructor function is called the custom element constructor.
+
+##### WHY
+1. Provide a way for Web developers to build their own, fully-featured DOM elements.
+Although it was long supported to create any element you want on the html page, this feature was not very functional, inform the4 parser on how to properly construct an element and to react to life cycle changes of an element.
+
+2. Rationalize the platform.
+HTML elements explain the functionality of existing Web platform features.
+Rationalize all HTML, SVG and MathML, elements into one coherent system.
+##### USAGE
+
+Extending an existing element class (ex. native elements)
+```
+	 document.defineElement("x-foo", class XFoo extends HTMLElement {
+        constructor() {
+            super();
+            this._initialData = "foo";
+        }
+    });
+
+```
+then use it in javascript
+
+`var foo = document.createElement("x-foo");`
+
+or in html
+
+`<x-foo></x-foo>`
+
+##### Browser Support
+![Alt text](./custom-elements-browser-support.png)
+
+### Polymer
+
+#### What
+* Polymer is a library to help you build Web Components.
+* Polymer is not a framework and it’s not trying to replace any existing frameworks.
+* The very premise of web components is that they are not a framework
+
+![Alt text](./polymer-position.png)
+
+#### Why
+> The goal is to make it easier for you to build web components that you can use anywhere. Use them in an angular app, or a react app, or build your entire app out of components. That’s the dream!
+
+#### Who
+Google.
+
+#### Usage
+
+```
+<!-- Webcomponents polyfill library -->
+<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+```
+
+`bower install --save Polymer/polymer`
+
+Anytime you create a new Polymer element, you’ll want to create an html file to hold its definition. 
+
+Use HTML Imports, to load dependency elements inside the newly created element, and later we will use HTML Imports to import our element into the document where it will register itself as a new element inside the browser and be used.
+
+```
+<!-- date-format.html -->
+<link rel=“import” href=“bower_components/polymer/polymer.html”>
+<link rel=“import” href=“vendor/momentjs.html”>
+<dom-module id=“date-format">
+	<template>
+        <style>
+        :host {
+            display: block;
+            font-weight : bold;
+			color: grey;
+        }
+        </style>
+        <span> {{ dateFromatted }} </span>
+    </template>
+  <script>
+    Polymer({
+      is: ‘date-format',
+      properties: {
+	      date: String,
+	      format: String,
+          dateFormatted: String
+      },
+      ready : function(){
+	      var date = this.date;
+	      var format = this.format;
+	      this.dateFormatted = this._format(date, format);
+      },
+      _format : function(date, format){
+		return moment(date).format(format);
+	  }
+    });
+  </script>
+</dom-module>
+```
+use it
+```
+	<head>
+		<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+		<link rel=“import” href=“elements/date-format.html”>
+	</head>
+	<body>
+		<date-format date="14-1-1989" format="MMM, DD"></date-format>
+	</body>
+
+```
+result will be ishi zay hek
+> **Jan, 14**
+
