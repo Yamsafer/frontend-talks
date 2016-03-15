@@ -1,24 +1,21 @@
-### Polymer
+## Polymer
 
-#### What
+[TOC]
+
+### What
 * Polymer is a library to help you build Web Components.
 * Polymer is not a framework and it’s not trying to replace any existing frameworks.
 * The very premise of web components is that they are not a framework
 
 ![Alt text](./_images/polymer-position.png)
 
-#### Why
+### Why
 > The goal is to make it easier for you to build web components that you can use anywhere. Use them in an angular app, or a react app, or build your entire app out of components. That’s the dream!
 
-#### Who
+###Who
 Google.
 
-#### Usage
-
-```
-<!-- Webcomponents polyfill library -->
-<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-```
+###Usage
 
 `bower install --save Polymer/polymer`
 
@@ -33,18 +30,23 @@ Use HTML Imports, to load dependency elements inside the newly created element, 
 <dom-module id=“date-format">
   <template>
         <style>
+        /* CSS rules for your element */
         :host {
             display: block;
             font-weight : bold;
       color: grey;
         }
         </style>
-        <span> {{ dateFromatted }} </span>
+        <!-- shadow/local DOM for your element -->
+        <span> {{ dateFromatted }} </span> <!-- data bindings in local DOM -->
     </template>
   <script>
+    // element registration
     Polymer({
       is: ‘date-format',
+            // add properties and methods on the element's prototype
       properties: {
+          // declare properties for the element's public API
         date: String,
         format: String,
           dateFormatted: String
@@ -76,3 +78,26 @@ use it
 result will be ishi zay hek
 > **Jan, 14**
 
+-------------------------------------------
+
+###In depth
+  
+#### Registration & Lifecycle
+
+#### Declared properties
+
+#### Local dom
+
+#### Events
+
+#### Data binding
+
+#### Behaviors
+
+#### Styling
+
+------------------------
+
+### Community Elements
+* Elements Catalog
+* Customelemtns.io

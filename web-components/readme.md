@@ -17,7 +17,7 @@ There i still hope for humanity
 
 The result was
 ### Web Components Specs
-Web Components are low-level primitives that let you define your own HTML Elements.
+Web Components are low-level primistives that let you define your own HTML Elements.
 
 In the past, a new tag would be invented, and then we had to wait for it to ship in every browser, now we can invent these tags, and share them.
 
