@@ -25,7 +25,7 @@ In the past, a new tag would be invented, and then we had to wait for it to ship
 
 There are four specs that make up web components
 
-1. [Template](#Template)
+1. [Template](#template)
 2. [Shadow Dom](#shadow-dom)
 3. [HTML Imports](#html-imports)
 4. [Custom elements](#custom-elements)
