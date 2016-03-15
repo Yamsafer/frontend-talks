@@ -2,11 +2,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
+  - [Web Components](#web-components)
     - [Abundance of choice](#abundance-of-choice)
     - [Web Components Specs](#web-components-specs)
       - [Template](#template)
         - [What](#what)
-- [Frontend Talks](#frontend-talks)
         - [WHY](#why)
         - [Usage](#usage)
         - [Browser Support](#browser-support)
@@ -27,9 +27,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-##Web Components
-
-[TOC]
+## Web Components
 
 ### Abundance of choice
 It feels like every 6 months to a year there is some new framework we have to learn.
@@ -44,8 +42,10 @@ There i still hope for humanity
 
  A few years ago, engineers who work on the browsers got together to figure out, what are the best features of the frameworks and can we make them part of the browser. That way you don’t have to rewrite your code every 6 months.
 
-The result was
+The result was:
+
 ### Web Components Specs
+
 Web Components are low-level primistives that let you define your own HTML Elements.
 
 In the past, a new tag would be invented, and then we had to wait for it to ship in every browser, now we can invent these tags, and share them.

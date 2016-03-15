@@ -5,6 +5,9 @@
 - [Polymer](#polymer)
   - [What](#what)
   - [Why](#why)
+  - [Who](#who)
+  - [Usage](#usage)
+  - [In depth](#in-depth)
     - [Registration & Lifecycle](#registration-&-lifecycle)
     - [Declared properties](#declared-properties)
     - [Local dom](#local-dom)
@@ -16,9 +19,8 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Polymer
 
-[TOC]
+## Polymer
 
 ### What
 * Polymer is a library to help you build Web Components.
@@ -30,10 +32,10 @@
 ### Why
 > The goal is to make it easier for you to build web components that you can use anywhere. Use them in an angular app, or a react app, or build your entire app out of components. That’s the dream!
 
-###Who
+### Who
 Google.
 
-###Usage
+### Usage
 
 `bower install --save Polymer/polymer`
 
@@ -98,7 +100,7 @@ result will be ishi zay hek
 
 -------------------------------------------
 
-###In depth
+### In depth
   
 #### Registration & Lifecycle
 
