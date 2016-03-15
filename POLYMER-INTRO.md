@@ -186,6 +186,8 @@ Use HTML Imports, to load dependency elements inside the newly created element, 
 use it
 ```
 	<head>
+		<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
 		<link rel=“import” href=“elements/date-format.html”>
 	</head>
 	<body>
