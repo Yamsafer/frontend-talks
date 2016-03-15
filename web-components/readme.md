@@ -5,7 +5,7 @@
 ### Abundance of choice
 It feels like every 6 months to a year there is some new framework we have to learn.
 
-![Alt text](./js-frameworks-trends.png)
+![Alt text](./_images/js-frameworks-trends.png)
 
 - Lots of frameworks,
 - Notion of **components**,
@@ -14,7 +14,7 @@ It feels like every 6 months to a year there is some new framework we have to le
 There i still hope for humanity
 > A few years ago, engineers who work on the browsers got together to figure out, what are the best features of the frameworks and can we make them part of the browser. That way you don’t have to rewrite your code every 6 months.
 
-![Alt text](./logo.jpg)
+![Alt text](./_images/logo.jpg)
 
 > In the past, a new tag would be invented, and then we had to wait for it to ship in every browser.
 
@@ -60,7 +60,7 @@ Web components brings us the template html tag
 </script>
 ```
 ##### Browser Support
-![Alt text](./template-browser-support.png)
+![Alt text](./_images/template-browser-support.png)
 
 but  don't worry, polyfills are there for the save.
 
@@ -118,4 +118,4 @@ or in html
 `<x-foo></x-foo>`
 
 ##### Browser Support
-![Alt text](./custom-elements-browser-support.png)
+![Alt text](./_images/custom-elements-browser-support.png)
