@@ -20,7 +20,9 @@ There i still hope for humanity
 
 **Web Components are low-level primitives that let you define your own HTML Elements.**
 
-### TEMPLATE
+### Web Components
+#### Template
+##### WHY
 as the landscape of web architecture is changing, and as the MVC model is not anymore bound by server frameworks only, and with the rise of client-side javascript framworks that compiles and render views on the user-agent, and as it's a shame if we move forward doing client side templating using such syntax
 
 ```
@@ -31,6 +33,7 @@ as the landscape of web architecture is changing, and as the MVC model is not an
   </div>
 </script>
 ```
+##### What
 Web components brings us the template html tag
 ```
 <template id="template">
@@ -46,7 +49,7 @@ Web components brings us the template html tag
   </div>
 </template>
 ```
-#### Usage
+##### Usage
 ```
 <script>
   var template = document.querySelector('#template');
@@ -56,15 +59,17 @@ Web components brings us the template html tag
   host.appendChild(clone);
 </script>
 ```
-#### Browser Support
+##### Browser Support
 ![Alt text](./template-browser-support.png)
 
 but  don't worry, polyfills are there for the save.
 
-### SHADOW DOM
+#### SHADOW DOM
 
-### HTML IMPORTS
+#### HTML IMPORTS
 
-### CUSTOM ELEMENTS
+#### CUSTOM ELEMENTS
+
+### Polymer
 
 
