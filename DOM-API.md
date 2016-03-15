@@ -1,7 +1,7 @@
 ###DOM: Document Object Model
 
 The Document Object Model (DOM) is a programming interface for HTML, XML and SVG documents. It provides a structured representation of the document as a tree.
-![Alt text](./DOM_API/dom-position.png)
+![Alt text](./DOM-API/dom-position.png)
 
 #DOM != JAVASCRIPT
 
@@ -13,7 +13,7 @@ as a result we have a set of libraries and tools that provide an api to manipula
 
 These tools account for differences between the different browsers and thus as we use them it helps us focus on our code rather than dealing with browser compatibility issues.
 
-![Alt text](./DOM_API/framework-position.png)
+![Alt text](./DOM-API/framework-position.png)
 
 [quirksmode.org](quirksmode.org) is the best place to learn about DOM quirks.
 
