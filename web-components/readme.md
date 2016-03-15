@@ -23,7 +23,8 @@ In the past, a new tag would be invented, and then we had to wait for it to ship
 
 ![Alt text](./_images/logo.jpg)
 
-There are four specs that make up web components:
+There are four specs that make up web components
+
 1. [Template](#Template)
 2. [Shadow Dom](#shadow-dom)
 3. [HTML Imports](#html-imports)
