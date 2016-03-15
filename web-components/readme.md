@@ -12,18 +12,46 @@ It feels like every 6 months to a year there is some new framework we have to le
 - **they don’t work together**.
 
 There i still hope for humanity
-> A few years ago, engineers who work on the browsers got together to figure out, what are the best features of the frameworks and can we make them part of the browser. That way you don’t have to rewrite your code every 6 months.
+
+ A few years ago, engineers who work on the browsers got together to figure out, what are the best features of the frameworks and can we make them part of the browser. That way you don’t have to rewrite your code every 6 months.
+
+The result was
+### Web Components Specs
+Web Components are low-level primitives that let you define your own HTML Elements.
+
+In the past, a new tag would be invented, and then we had to wait for it to ship in every browser, now we can invent these tags, and share them.
 
 ![Alt text](./_images/logo.jpg)
 
-> In the past, a new tag would be invented, and then we had to wait for it to ship in every browser.
+There are four specs that make up web components:
+1. [Template](#Template)
+2. [Shadow Dom](#shadow-dom)
+3. [HTML Imports](#html-imports)
+4. [Custom elements](#custom-elements)
 
-**Web Components are low-level primitives that let you define your own HTML Elements.**
+We will discuss each component in details later, 
 
-### Web Components
+But what about browser support for these new specifications now? 
+> A lot of progress has been made since the introduction of the Web Components back in 2011. All major browsers have started implementation of the technologies needed to run web components natively. While browser vendors are still working on native implementations, libraries have been able to use a polyfill to make web components available to developers already.
+ 
+ The webcomponent.js polyfills enable Web Components in (evergreen) browsers that lack native support.
+
+`<script src="bower_components/webcomponentsjs/webcomponents.min.js" </script>`
+
+
 #### Template
+##### What
+Templates allow you to declare fragments of markup which are parsed as HTML, go unused at page load, but can be instantiated later on at runtime.
+```
+<template id="template">
+  <div>
+    <h1>Frontend Talks</h1>
+    <img class="thumb" src="./logo.png">
+  </div>
+</template>
+```
 ##### WHY
-as the landscape of web architecture is changing, and as the MVC model is not anymore bound by server frameworks only, and with the rise of client-side javascript framworks that compiles and render views on the user-agent, and as it's a shame if we move forward doing client side templating using such syntax
+As the landscape of web architecture is changing, and as the MVC model is not anymore bound by server frameworks only, and with the rise of client-side javascript framworks that compiles and render views on the user-agent, and as it's a shame if we move forward doing client side templating using such syntax
 
 ```
 <script type="text/template">
@@ -33,24 +61,14 @@ as the landscape of web architecture is changing, and as the MVC model is not an
   </div>
 </script>
 ```
-##### What
-Web components brings us the template html tag
+##### Usage
 ```
 <template id="template">
-  <style>
-	.thumb{
-		border : 1px solid red;
-		padding : 5px;
-	}
-  </style>
   <div>
     <h1>Frontend Talks</h1>
     <img class="thumb" src="./logo.png">
   </div>
 </template>
-```
-##### Usage
-```
 <script>
   var template = document.querySelector('#template');
   // deep clone
@@ -62,20 +80,12 @@ Web components brings us the template html tag
 ##### Browser Support
 ![Alt text](./_images/template-browser-support.png)
 
-but  don't worry, polyfills are there for the save.
-
-#### SHADOW DOM
-##### What
-##### Why
-##### USAGE
-##### Browser Support
-
 #### HTML IMPORTS
 ##### What
-	HTML Imports are a way to include and reuse HTML documents in other HTML documents
+HTML Imports are a way to include and reuse HTML documents in other HTML documents
 
 ##### WHY 
-> Imports provide convention for **bundling HTML/CSS/JS** (even other HTML Imports) into a single deliverable. It's an intrinsic feature, but a powerful one. If you're creating a theme, library, or just want to **segment your app** into logical chunks, giving users a single URL is compelling. Heck, you could even **deliver** an entire app via an import. Think about that for a second.
+ Imports provide convention for **bundling HTML/CSS/JS** (even other HTML Imports) into a single deliverable. It's an intrinsic feature, but a powerful one. If you're creating a theme, library, or just want to **segment your app** into logical chunks, giving users a single URL is compelling. Heck, you could even **deliver** an entire app via an import. Think about that for a second.
 
 
 ##### USAGE
@@ -84,13 +94,17 @@ but  don't worry, polyfills are there for the save.
   <link rel="import" href="/path/to/imports/stuff.html">
 </head>
 ```
-##### Browser Support
 
-#### CUSTOM ELEMENTS
+##### Browser Support
+> add content
+
+#### Custom Elements
 ##### What
-A custom element is an element whose constructor and prototype are defined by a developer, instead of by the user agent. The developer-supplied constructor function is called the custom element constructor.
+A custom element is an element whose constructor and prototype are defined by a developer, instead of by the user agent. 
+
 
 ##### WHY
+
 1. Provide a way for Web developers to build their own, fully-featured DOM elements.
 Although it was long supported to create any element you want on the html page, this feature was not very functional, inform the4 parser on how to properly construct an element and to react to life cycle changes of an element.
 
@@ -101,7 +115,7 @@ Rationalize all HTML, SVG and MathML, elements into one coherent system.
 
 Extending an existing element class (ex. native elements)
 ```
-	 document.defineElement("x-foo", class XFoo extends HTMLElement {
+   document.defineElement("x-foo", class XFoo extends HTMLElement {
         constructor() {
             super();
             this._initialData = "foo";
@@ -119,3 +133,10 @@ or in html
 
 ##### Browser Support
 ![Alt text](./_images/custom-elements-browser-support.png)
+
+
+#### SHADOW DOM
+##### What
+##### Why
+##### USAGE
+##### Browser Support
