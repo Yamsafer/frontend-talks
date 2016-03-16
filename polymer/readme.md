@@ -7,14 +7,15 @@
   - [Why](#why)
   - [Who](#who)
   - [Usage](#usage)
-  - [In depth](#in-depth)
+  - [In depth](#in-depth)https://github.com/Yamsafer/frontend-talks/blob/master/polymer/readme.md#registration-&-lifecycle
+  - ​
       - [Registration](#registration)
       - [Lifecycle](#lifecycle)
-    - [Declared properties](#declared-properties)
-    - [Events](#events)
-    - [Data binding](#data-binding)
-    - [Behaviors](#behaviors)
-    - [Styling](#styling)
+        - [Declared properties](#declared-properties)
+        - [Events](#events)
+        - [Data binding](#data-binding)
+        - [Behaviors](#behaviors)
+        - [Styling](#styling)
   - [Community Elements](#community-elements)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -196,7 +197,7 @@ What about siblings like `<my-photo>` ?
 
 ####Local dom
 
-Naturally a custom-element tempalte will be treated as a shadow-dom, 
+As shadow-dom is part of the web components specificatino, when we build a custom element, it's content should be expressed in shadow dom, but as browser vendors are still in the process of implmenting these specifications, and as shadow dom is hard to polypill
 
 
 

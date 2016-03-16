@@ -7,6 +7,7 @@
     - [Web Components Specs](#web-components-specs)
       - [Template](#template)
         - [What](#what)
+- [Frontend Talks](#frontend-talks)
         - [WHY](#why)
         - [Usage](#usage)
         - [Browser Support](#browser-support)
@@ -22,6 +23,7 @@
       - [SHADOW DOM](#shadow-dom)
         - [What](#what-3)
         - [Why](#why)
+          - [Dom Pollution](#dom-pollution)
         - [USAGE](#usage-1)
         - [Browser Support](#browser-support-3)
 
@@ -63,7 +65,7 @@ We will discuss each component in details later,
 
 But what about browser support for these new specifications now? 
 > A lot of progress has been made since the introduction of the Web Components back in 2011. All major browsers have started implementation of the technologies needed to run web components natively. While browser vendors are still working on native implementations, libraries have been able to use a polyfill to make web components available to developers already.
- 
+
  The webcomponent.js polyfills enable Web Components in (evergreen) browsers that lack native support.
 
 `<script src="bower_components/webcomponentsjs/webcomponents.min.js" </script>`
@@ -136,12 +138,12 @@ A custom element is an element whose constructor and prototype are defined by a 
 ##### WHY
 
 1. Provide a way for Web developers to build their own, fully-featured DOM elements.
-Although it was long supported to create any element you want on the html page, this feature was not very functional, inform the4 parser on how to properly construct an element and to react to life cycle changes of an element.
+   Although it was long supported to create any element you want on the html page, this feature was not very functional, inform the4 parser on how to properly construct an element and to react to life cycle changes of an element.
 
 2. Rationalize the platform.
-HTML elements explain the functionality of existing Web platform features.
-Rationalize all HTML, SVG and MathML, elements into one coherent system.
-##### USAGE
+   HTML elements explain the functionality of existing Web platform features.
+   Rationalize all HTML, SVG and MathML, elements into one coherent system.
+   ##### USAGE
 
 Extending an existing element class (ex. native elements)
 ```
@@ -168,5 +170,45 @@ or in html
 #### SHADOW DOM
 ##### What
 ##### Why
+> Web components aim to provide the user a **simple element interface** that is rendered with **complexity hidden under the hood.**
+
+
+
+###### Dom Pollution
+
+Using code/libraries to build new web elements that do specific jobs, likfe for example take twitter typeahead, it i want to transform an input field to be an autocomplete field, it does a great job at that, although you have to write lots of code, but also if you inspect your DOM-TREE you will find that your simple 
+
+`<input type="text" class="typeahead" />`
+
+is now looking something like this
+
+```
+<input type="text" class="typeahead">
+<span class="twitter-typeahead" style="position: relative; display: inline-block;"><input id="destination" value="" autocomplete="off" name="destination" type="text" placeholder="Search for a hotel, city or a landmark" blur-placeholder="Search for a hotel, city or a landmark" focus-placeholder="Start Typing ..." class="ys-input-group__input bold typeahead tt-input" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; color: inherit; font-weight: bold;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: 'Source Sans Pro', ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: bold; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div id="dest-wrap" class="destination-wrapper hide"><div class="dropdown-wrapper">Destinations</div><div class="tt-menu desktop" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-Recent"><div class="tt-heading text-danger"> Recent Searches </div><div class="fade in tt-suggestion tt-selectable">     <small class="pull-right"> 471 Properties </small>     <span> United Arab Emirates, <small class="text-muted"> Dubai </small> </span></div></div><div class="tt-dataset tt-dataset-Trends"><div class="tt-heading text-danger">Trending </div><div class="fade in tt-suggestion tt-selectable">     <small class="pull-right"> 471 Properties </small>     <span> Dubai, <small class="text-muted"> United Arab Emirates </small> </span></div><div class="fade in tt-suggestion tt-selectable">     <small class="pull-right"> 201 Properties </small>     <span> Jeddah, <small class="text-muted"> Saudi Arabia </small> </span></div><div class="fade in tt-suggestion tt-selectable">     <small class="pull-right"> 167 Properties </small>     <span> Makkah, <small class="text-muted"> Saudi Arabia </small> </span></div><div class="fade in tt-suggestion tt-selectable">     <small class="pull-right"> 19 Properties </small>     <span> Ramallah, <small class="text-muted"> Palestine </small> </span></div><div class="fade in tt-suggestion tt-selectable">     <small class="pull-right"> 64 Properties </small>     <span> Madinah, <small class="text-muted"> Saudi Arabia </small> </span></div></div><div class="tt-dataset tt-dataset-City"></div><div class="tt-dataset tt-dataset-Region"></div><div class="tt-dataset tt-dataset-Property"></div><div class="tt-dataset tt-dataset-Attraction"></div></div></div></span>
+
+```
+
+
+
+Which is ok! but it's also now inside your document, and this is indeed pollution, it's like cars smoke, with web components, we build custom-elements that leverage shadow-doms to hide away the implementation details, so to have a twitter typeahead input, you would do something like
+
+and we can see here that :
+
+- Details of the implementation are leaking.
+- Queries over the document now include the all the new inserted dom.
+- The new nodes may be affected by stylesheets, because the document author wasn’t expecting them.
+- Some libraries might even change the position of a DOM in a document, thus the user might lose track, user here means developer (user of the library)
+
+
+
+And this is where shadow-dom comes in, shadow-dom puts the element dom-tree (implementation) in a different scope of the current document, it is as if we are hiding the new dom in the shadows! and so.
+
+
+- Details of the implementation are hidden.
+- Queries over the document will not see the new dom, which is consistent with what you see while developing to what you see at render time.
+- The new nodes are not affected by stylesheets, because they are not in the document scope.
+- The dom position in the document tree will not change, thus no unexpected behaviours like messy styles or failing dom queries.
+
+
 ##### USAGE
 ##### Browser Support
