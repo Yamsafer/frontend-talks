@@ -197,7 +197,114 @@ What about siblings like `<my-photo>` ?
 
 ####Local dom
 
-As shadow-dom is part of the web components specificatino, when we build a custom element, it's content should be expressed in shadow dom, but as browser vendors are still in the process of implmenting these specifications, and as shadow dom is hard to polypill
+##### Shady DOM
+
+As shadow-dom is part of the web components specifications, when we build a custom element, it's content should be expressed in shadow dom, but as browser vendors are still in the process of implmenting these specifications, and as shadow dom is hard to polyfill for the following reasons
+
+It’s a lot of code.
+- It’s slow to indirect all the DOM API.
+- Structures like `NodeList` can simply not be emulated.
+- There are certain accessors that cannot be overwritten (for example, `window.document`,`window.document.body`).
+- The polyfill returns objects that are not actually Nodes, but Node proxies, which can be very confusing.
+
+The good ladies and gentlemen at google gave birth to Shady DOM.
+
+> Roughly speaking, shady DOM provides a shadow DOM compatible form of tree scoping. 
+>
+> The upshot is that shady DOM provides enough tree-scoping for Polymer to act as if shadow DOM is available on all platforms, without compromising performance.
+
+The downside of shady DOM now is that it still leaks, and might lead to messy css and all the negative points we used to describe traditional solutions.
+
+But the bright side is that if we use the shady DOM api to look at the custom-element, it wil look the same as if we are dealing with a shadow-dom, this helps nowadays project adapt the concept of web components and start using it for production applications, and later when Polymer change to use shadow-dom by default (when the browsers are ready) your code wil be the same, but instead of using shady, you will be using shadow without changing code, because shady is built to mimic shadow, they are compatible.
+
+and so because of the confusion that arises from these two implementations, the ladies and gentlemen at google (creators of polymer) decided to call the dom that is encapsulated inside a custom element **local DOM**.
+
+note that as we call the DOM encapsulated inside the custom-element 
+
+**shadow**-dom, we call the DOM elements that are children of the element
+
+**light**-dom.
+
+note: we can set polymer to use shadow-dom when available by the browser.
+
+##### Defining local dom
+
+Using a `<template>` inside a  `<dom-module>` element with an `id` that matches the `is` property of a custom element will make this template be the custom element's local DOM.
+
+```html
+<dom-module id="x-foo">
+  <template>I am x-foo!</template>
+  <script>
+    Polymer({
+      is: 'x-foo'
+    });
+  </script>
+</dom-module>
+```
+
+
+
+> We say that an element definition has an imperative and declarative portion. The imperative portion is the call to `Polymer({...})`, and the declarative portion is the`` element. The imperative and declarative portions of an element’s definition may be placed in the same html file or in separate files.
+
+##### Finding/Accessing local dom
+
+Polymer provides methods to access local dom.
+
+```javascript
+<dom-module id="x-custom">
+  <template>
+    Hello World from <span id="name"></span>!
+  </template>
+  <script>
+    Polymer({
+      is: 'x-custom',
+      ready: function() {
+        // to access statically created local dom
+        this.$.name.textContent = this.tagName;
+        
+        // to access dynamically created local dom you can do 
+        // this.$$(selector)
+        // returns the first node in the local DOM that matches selector.
+      }
+    });
+  </script>
+</dom-module>
+```
+
+##### Light Dom
+
+think of the following example
+
+```html
+<type-me>
+  <h1> The title of all titles </h1>	
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddo    eiusmod.
+</type-me>
+```
+
+how can we access the `h1` and `p` from inside the custom-element,
+
+remember that we are now living inside the elements rather than outside them.
+
+well the `h1` & `p` elements are called the **Light DOM** of the custom element, as they are the ones in the light, not in the **shadow**.
+
+
+
+> In shadow DOM, the browser maintains separate light DOM and shadow DOM trees, and creates a merged view (the *composed tree*) for rendering purposes.
+>
+> In shady DOM, Polymer maintains its own light DOM and shady DOM trees. The document’s DOM tree is effectively the composed tree.
+
+In shady DOM, Polymer maintains its own light DOM and shady DOM trees. The document’s DOM tree is effectively the composed tree.
+
+
+
+```html
+<template>
+  <header>Local dom header followed by distributed dom.</header>
+  <content select="h1"></content>
+  <content></content>
+</template>
+```
 
 
 
