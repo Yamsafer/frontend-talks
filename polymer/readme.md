@@ -101,18 +101,120 @@ result will be ishi zay hek
 -------------------------------------------
 
 ### In depth
-  
-#### Registration & Lifecycle
+
+##### Registration
+
+```javascript
+// register an element
+MyElement = Polymer({
+  is: 'my-element',
+  created: function() {
+    this.textContent = 'My element!';
+  }
+});
+```
+
+> By specification, the custom element’s name **must contain a dash (-)**.
+
+use in document
+
+`<my-element></my-element>`
+
+or in javascript with the constructor
+
+`var myEl = new MyElement();`
+
+* The `Polymer` function registers the element with the browser and returns a constructor that can be used to create new instances of your element via code.
+* The `Polymer` function sets up the prototype chain for your custom element, chaining it to the Polymer`Base` prototype.
+* use [behaviors](#behaviors) to share code between elements.
+
+
+
+We can as well extend native elements (later will be able to extend custom-elements as well)
+
+```
+MyInput = Polymer({
+  is: 'my-input',
+  extends: 'input',
+  created: function() {
+    this.style.border = '1px solid red';
+  }
+});
+```
+
+```
+<input is="my-input">
+```
+
+##### Lifecycle
+
+```
+MyElement = Polymer({
+  is: 'my-element',
+  created: function() {
+	// Use instead of createdCallback.
+	// Called when the element has been created
+    // Before property values are set and shadow/local DOM is initialized.
+  },
+  ready: function() {
+	// Called after property values are set and local DOM is initialized.
+  },
+  attached: function() {
+  	// Use instead of attachedCallback.
+	// Called after the element is attached to the document. 
+    // ex. Access computed dom styles, add document-level event listeners
+  },
+  detached: function() {
+    // Use instead of detachedCallback.
+    // Called after the element is detached from the document.
+  },
+  attributeChanged: function(name, type) {
+	// Called when one of the element's attributes is changed.
+  }
+
+});
+```
+
+In a document dom-tree, elemens are usually initialized in order
+
+consider the following example
+
+```
+<avatar-list>
+  <my-photo class="photo" src="one.jpg">First photo</my-photo>
+  <my-photo class="photo" src="two.jpg">Second photo</my-photo>
+</avatar-list>
+```
+
+>  `<avatar-list> ` is *likely* to have its `ready` method called before `<my-photo> ` `ready` method.
+
+What about siblings like `<my-photo>` ?
+
+> There are no guarantees with regard to initialization timing between sibling elements.
+
+
+
+####Local dom
+
+Naturally a custom-element tempalte will be treated as a shadow-dom, 
+
+
 
 #### Declared properties
 
-#### Local dom
+
 
 #### Events
 
+
+
 #### Data binding
 
+
+
 #### Behaviors
+
+
 
 #### Styling
 
