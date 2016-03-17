@@ -48,6 +48,34 @@ These tools account for differences between the different browsers and thus as w
 
 >everything is a node, elements, comments, white space"
 
+
+
+# All elements share common API
+
+All elements share a common API, in HTML5 custom elements share the same common API by default.
+
+
+
+## The Document Object
+
+When an HTML document is loaded into a web browser, it becomes a **document object**.
+
+The document object is the root node of the HTML document and the "owner" of all other nodes.
+
+The document object provides properties and methods to access all node objects, from within JavaScript.
+
+
+
+## Native elements have specific API
+
+Native elements such as anchor tags, paragraphs, have specific API.
+
+![Elements](./_images/elements.png)
+
+
+
+# Some of those API's
+
 ### DOM Fetching
 
 ```
@@ -57,7 +85,6 @@ var paragraph = document.querySelector('#paragraph');
 var pParent 	= paragraph.parentElement;
 var pHtml 		= paragraph.innerHTML;
 var pClassList 	= paragraph.classList;
-
 ```
 
 ### DOM Events
@@ -134,6 +161,5 @@ paragraph.on('click', function(e){
 paragraph.classList.add("hero");
 setTimeout(function(){
 	paragraph.remove();
-}, 3000000)
-
+}, 3000)
 ```
