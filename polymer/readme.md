@@ -306,6 +306,14 @@ In shady DOM, Polymer maintains its own light DOM and shady DOM trees. The docum
 </template>
 ```
 
+##### Shady DOM API
+
+Part of the shady DOM is the API that polymer provides for manipulating the dom.
+
+and as noted by the Polymer team
+
+> **Note:** All DOM manipulation must use this API, as opposed to DOM API directly on nodes.
+
 
 
 #### Declared properties
