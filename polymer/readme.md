@@ -2,21 +2,31 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Polymer](#polymer)
-  - [What](#what)
   - [Why](#why)
-  - [Who](#who)
   - [Usage](#usage)
-  - [In depth](#in-depth)https://github.com/Yamsafer/frontend-talks/blob/master/polymer/readme.md#registration-&-lifecycle
-  - ​
-      - [Registration](#registration)
-      - [Lifecycle](#lifecycle)
-        - [Declared properties](#declared-properties)
-        - [Events](#events)
-        - [Data binding](#data-binding)
-        - [Behaviors](#behaviors)
-        - [Styling](#styling)
-  - [Community Elements](#community-elements)
+  - [In depth](#in-depth)
+    - [Registration](#registration)
+    - [Lifecycle](#lifecycle)
+      - [Shady DOM](#shady-dom)
+      - [Defining local dom](#defining-local-dom)
+      - [Finding/Accessing local dom](#findingaccessing-local-dom)
+      - [Light Dom](#light-dom)
+- [ The title of all titles ](#the-title-of-all-titles)
+      - [Shady DOM API](#shady-dom-api)
+        - [Adding and removing children](#adding-and-removing-children)
+        - [Parent and child APIs](#parent-and-child-apis)
+        - [Query selector](#query-selector)
+        - [Content APIs](#content-apis)
+        - [Node mutation APIs](#node-mutation-apis)
+        - [Working with Local DOM](#working-with-local-dom)
+        - [Working with Light DOM](#working-with-light-dom)
+        - [Distributed children](#distributed-children)
+      - [Declared properties](#declared-properties)
+      - [Events](#events)
+      - [Data binding](#data-binding)
+      - [Behaviors](#behaviors)
+      - [Styling](#styling)
+    - [Community Elements](#community-elements)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -102,6 +112,8 @@ use it
 ```
 result will be ishi zay hek
 > **Jan, 14**
+
+
 ## In depth
 
 ### Registration
