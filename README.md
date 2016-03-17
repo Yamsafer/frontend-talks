@@ -97,7 +97,7 @@
 
 
 
-### Timeline
+### Timeline (proposal)
 
 4:00 -- 4:15 : Fun Activity.
 
@@ -107,7 +107,7 @@
 
 5:05 -- 5:30 : Event Listeners.
 
-5:30 -- 6:00: Web Components.
+5:30 -- 6:00: Web Components Details.
 
 6:00 - 6:30 Polymer Slides.
 
