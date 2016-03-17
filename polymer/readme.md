@@ -273,20 +273,20 @@ Polymer provides methods to access local dom.
 
 ##### Light Dom
 
-think of the following example
+Think of the following example
 
 ```html
 <type-me>
   <h1> The title of all titles </h1>	
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddo    eiusmod.
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 		seddoeiusmod.</p>
 </type-me>
 ```
 
 how can we access the `h1` and `p` from inside the custom-element,
 
-remember that we are now living inside the elements rather than outside them.
+remember that we are now living inside the elements rather than outside of it.
 
-well the `h1` & `p` elements are called the **Light DOM** of the custom element, as they are the ones in the light, not in the **shadow**.
+ `h1` & `p` elements are called the **Light DOM** of the custom element, as they are the ones in the light, not in the **shadow**.
 
 
 

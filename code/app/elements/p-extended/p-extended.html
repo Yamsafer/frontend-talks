@@ -86,7 +86,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             _calculacteT : function(timePassed, totalTime){
                 var t = (timePassed/totalTime);
-                return this.easeOutQuint(t);
+                return this.easeInOutCubic(t);
             }
         });
     })();
