@@ -20,23 +20,27 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+#Polymer
 
-## Polymer
+##What
 
-### What
 * Polymer is a library to help you build Web Components.
 * Polymer is not a framework and it’s not trying to replace any existing frameworks.
 * The very premise of web components is that they are not a framework
 
 ![Alt text](./_images/polymer-position.png)
 
-### Why
+
+## Why
+
 > The goal is to make it easier for you to build web components that you can use anywhere. Use them in an angular app, or a react app, or build your entire app out of components. That’s the dream!
 
-### Who
+
+##Who
+
 Google.
 
-### Usage
+## Usage
 
 `bower install --save Polymer/polymer`
 
@@ -98,12 +102,11 @@ use it
 ```
 result will be ishi zay hek
 > **Jan, 14**
+## In depth
 
--------------------------------------------
+### Registration
 
-### In depth
 
-##### Registration
 
 ```javascript
 // register an element
@@ -147,7 +150,9 @@ MyInput = Polymer({
 <input is="my-input">
 ```
 
-##### Lifecycle
+### Lifecycle
+
+
 
 ```
 MyElement = Polymer({
@@ -192,12 +197,9 @@ consider the following example
 What about siblings like `<my-photo>` ?
 
 > There are no guarantees with regard to initialization timing between sibling elements.
+### Local dom
 
-
-
-####Local dom
-
-##### Shady DOM
+#### Shady DOM
 
 As shadow-dom is part of the web components specifications, when we build a custom element, it's content should be expressed in shadow dom, but as browser vendors are still in the process of implmenting these specifications, and as shadow dom is hard to polyfill for the following reasons
 
@@ -227,7 +229,7 @@ note that as we call the DOM encapsulated inside the custom-element
 
 note: we can set polymer to use shadow-dom when available by the browser.
 
-##### Defining local dom
+#### Defining local dom
 
 Using a `<template>` inside a  `<dom-module>` element with an `id` that matches the `is` property of a custom element will make this template be the custom element's local DOM.
 
@@ -246,7 +248,7 @@ Using a `<template>` inside a  `<dom-module>` element with an `id` that matches 
 
 > We say that an element definition has an imperative and declarative portion. The imperative portion is the call to `Polymer({...})`, and the declarative portion is the`` element. The imperative and declarative portions of an element’s definition may be placed in the same html file or in separate files.
 
-##### Finding/Accessing local dom
+#### Finding/Accessing local dom
 
 Polymer provides methods to access local dom.
 
@@ -271,7 +273,7 @@ Polymer provides methods to access local dom.
 </dom-module>
 ```
 
-##### Light Dom
+#### Light Dom
 
 Think of the following example
 
@@ -306,7 +308,7 @@ In shady DOM, Polymer maintains its own light DOM and shady DOM trees. The docum
 </template>
 ```
 
-##### Shady DOM API
+#### Shady DOM API
 
 Part of the shady DOM is the API that polymer provides for manipulating the dom.
 
@@ -314,7 +316,54 @@ and as noted by the Polymer team
 
 > **Note:** All DOM manipulation must use this API, as opposed to DOM API directly on nodes.
 
+##### Adding and removing children
 
+- `Polymer.dom(parent).appendChild(node)`
+- `Polymer.dom(parent).insertBefore(node, beforeNode)`
+- `Polymer.dom(parent).removeChild(node)`
+- `Polymer.dom.flush()`
+
+##### Parent and child APIs
+
+- `Polymer.dom(parent).childNodes`
+- `Polymer.dom(parent).children`
+- `Polymer.dom(node).parentNode`
+- `Polymer.dom(node).firstChild`
+- `Polymer.dom(node).lastChild`
+- `Polymer.dom(node).firstElementChild`
+- `Polymer.dom(node).lastElementChild`
+- `Polymer.dom(node).previousSibling`
+- `Polymer.dom(node).nextSibling`
+- `Polymer.dom(node).textContent`
+- `Polymer.dom(node).innerHTML`
+
+##### Query selector
+
+- `Polymer.dom(parent).querySelector(selector)`
+- `Polymer.dom(parent).querySelectorAll(selector)`
+
+##### Content APIs
+
+- `Polymer.dom(contentElement).getDistributedNodes()`
+- `Polymer.dom(node).getDestinationInsertionPoints()`
+
+##### Node mutation APIs
+
+- `Polymer.dom(node).setAttribute(attribute, value)`
+- `Polymer.dom(node).removeAttribute(attribute)`
+- `Polymer.dom(node).classList`
+
+##### Working with Local DOM
+
+> Every Polymer element has a `this.root` property which is the root of its local DOM tree. You can manipulate the tree using `Polymer.dom` methods:
+
+##### Working with Light DOM
+
+> An element can access its light DOM children using `Polymer.dom(this).children` and similar properties and methods. However, most of the time you want to be aware of how light DOM children are distributed to insertion points.
+
+##### Distributed children
+
+> Sometimes it’s necessary to access the elements which have been distributed to a given `` insertion point or to know to which `` a given node has been distributed. The `getDistributedNodes` and`getDestinationInsertionPoints` methods, respectively, provide this information:
 
 #### Declared properties
 
