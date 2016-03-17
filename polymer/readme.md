@@ -32,6 +32,8 @@
 
 #Polymer
 
+Polymer is a library that uses the latest web technologies to let you create custom HTML elements. Build anything from a button to a complete application as an encapsulated, reusable element that works across desktop and mobile
+
 ##What
 
 * Polymer is a library to help you build Web Components.
@@ -209,7 +211,7 @@ consider the following example
 What about siblings like `<my-photo>` ?
 
 > There are no guarantees with regard to initialization timing between sibling elements.
-### Local dom
+> ### Local dom
 
 #### Shady DOM
 
@@ -275,7 +277,7 @@ Polymer provides methods to access local dom.
       ready: function() {
         // to access statically created local dom
         this.$.name.textContent = this.tagName;
-        
+
         // to access dynamically created local dom you can do 
         // this.$$(selector)
         // returns the first node in the local DOM that matches selector.
